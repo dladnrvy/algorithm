@@ -19,9 +19,9 @@ public class Study_7 {
 //            arrStr.add(reStr);
 //        }
 // 2.
-//        str = str.toUpperCase().replaceAll("[^A-Z]","");
-//        String tmp = new StringBuilder(str).reverse().toString();
-//        if(str.equals(tmp)) answer = "YES";
+        str = str.toUpperCase().replaceAll("[^A-Z]","");
+        String tmp = new StringBuilder(str).reverse().toString();
+        if(str.equals(tmp)) answer = "YES";
 
         return answer;
     }
