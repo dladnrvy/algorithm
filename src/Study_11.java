@@ -21,28 +21,37 @@ public class Study_11 {
 //
 // 최종적으로 “COOL"로 해석됩니다.
 
-    public String solution(String[] s) {
+    public String solution(int idx,String str) {
         String answer = "";
-        ArrayList<Character> arr_c = new ArrayList<>();
-
-        for( String sData : s){
-            String binary = "";
-
-            for(char c : sData.toCharArray()){
-                if(c == '#'){
-                    binary += 1;
-                }else if(c == '*'){
-                    binary +=0;
-                }
-            }
-
-            int value = Integer.valueOf(binary, 2);
-            arr_c.add( (char)value);
+//  1.
+//        ArrayList<Character> arr_c = new ArrayList<>();
+//
+//        for( String sData : s){
+//            String binary = "";
+//
+//            for(char c : sData.toCharArray()){
+//                if(c == '#'){
+//                    binary += 1;
+//                }else if(c == '*'){
+//                    binary +=0;
+//                }
+//            }
+//
+//            int value = Integer.valueOf(binary, 2);
+//            arr_c.add( (char)value);
+//        }
+//
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (char item : arr_c) { stringBuilder.append(item); }
+//        answer = stringBuilder.toString();
+// 2.
+        for(int i=0; i<idx; i++){
+            String tmp = str.substring(0,7).replace('#','1').replace('*','0');
+            int num = Integer.parseInt(tmp, 2);
+            answer += (char) num;
+            str = str.substring(7);
         }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        for (char item : arr_c) { stringBuilder.append(item); }
-        answer = stringBuilder.toString();
         return answer;
     }
 
@@ -50,18 +59,19 @@ public class Study_11 {
         Study_11 T = new Study_11();
         Scanner kb = new Scanner(System.in);
         int idx = kb.nextInt();
-        String[] str_arr = new String[idx];
         String str = kb.next();
-
-        int rt = 7;
-        int lt = 0;
-        for(int i=0; i<idx; i++){
-            str_arr[i] = str.substring(lt, rt);
-            lt = lt + 7;
-            rt = rt + 7;
-        }
+// 1.
+//        String[] str_arr = new String[idx];
+//
+//        int rt = 7;
+//        int lt = 0;
+//        for(int i=0; i<idx; i++){
+//            str_arr[i] = str.substring(lt, rt);
+//            lt = lt + 7;
+//            rt = rt + 7;
+//        }
 
         //System.out.println(Arrays.toString(str_arr));
-        System.out.print(T.solution(str_arr));
+        System.out.print(T.solution(idx, str));
     }
 }
