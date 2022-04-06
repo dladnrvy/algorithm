@@ -15,7 +15,7 @@ public class Study_2 {
     }
 
     public static void main(String[] args) {
-        Main T = new Main();
+        Study_2 T = new Study_2();
         Scanner kb = new Scanner(System.in);
         String str = kb.nextLine();
         System.out.print(T.solution(str));
