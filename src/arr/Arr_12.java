@@ -1,8 +1,10 @@
+package arr;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class Arr_12 {
 // 현수네 반 선생님은 반 학생들의 수학점수를 향상시키기 위해 멘토링 시스템을 만들려고 합니다.
 // 멘토링은 멘토(도와주는 학생)와 멘티(도움을 받는 학생)가 한 짝이 되어 멘토가 멘티의 수학공부를 도와주는 것입니다.
 // 선생님은 M번의 수학테스트 등수를 가지고 멘토와 멘티를 정합니다.
@@ -50,7 +52,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main T = new Main();
+        Arr_12 T = new Arr_12();
         Scanner kb = new Scanner(System.in);
         int n = kb.nextInt(); // 4
         int m = kb.nextInt(); // 3
