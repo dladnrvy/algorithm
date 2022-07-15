@@ -1,67 +1,45 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
-// 현수네 반 선생님은 반 학생들의 수학점수를 향상시키기 위해 멘토링 시스템을 만들려고 합니다.
-// 멘토링은 멘토(도와주는 학생)와 멘티(도움을 받는 학생)가 한 짝이 되어 멘토가 멘티의 수학공부를 도와주는 것입니다.
-// 선생님은 M번의 수학테스트 등수를 가지고 멘토와 멘티를 정합니다.
-// 만약 A학생이 멘토이고, B학생이 멘티가 되는 짝이 되었다면,
-// A학생은 M번의 수학테스트에서 모두 B학생보다 등수가 앞서야 합니다.
+// 오름차순으로 정렬이 된 두 배열이 주어지면
+// 두 배열을 오름차순으로 합쳐 출력하는 프로그램을 작성하세요.
 
 
-    public int solution(int[][] arr, int n, int m) {
-        int answer = 0;
+    public ArrayList<Integer> solution(ArrayList<Integer> n_arr, ArrayList<Integer> m_arr) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        n_arr.addAll(m_arr);
+        Collections.sort(n_arr);
 
-        //System.out.println(Arrays.deepToString(arr));
-
-        // i 학생 (3,1)
-        for(int i=1; i<=n; i++){
-            // j 학생
-            for(int j=1; j<=n; j++){
-                int cnt = 0;
-
-                // 시험수
-                for(int k=0; k<m; k++){
-                    int pi = 0;
-                    int pj = 0;
-
-                    // 등수
-                    for(int s=0; s<n; s++){
-                        if(arr[k][s] == i){
-                            pi = s;
-                        }
-                        if(arr[k][s] == j){
-                            pj = s;
-                        }
-                    }
-                    if( pi < pj) cnt++;
-                }
-                if(cnt == m){
-                    answer++;
-                }
-            }
-        }
-
-
+        //System.out.println(n_arr);
 
         //System.out.println(answer);
-        return answer;
+        return n_arr;
     }
 
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
-        int n = kb.nextInt(); // 4
-        int m = kb.nextInt(); // 3
-        int arr[][] = new int[m][n];
+        int n = kb.nextInt();
+        //int n_arr[] = new int[n];
+        ArrayList<Integer> n_arr = new ArrayList<>();
 
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                arr[i][j] = kb.nextInt();
-            }
+        for(int i=0; i<n; i++){
+            n_arr.add(kb.nextInt());
         }
 
-        System.out.println(T.solution(arr, n, m));
+        int m = kb.nextInt();
+        ArrayList<Integer> m_arr = new ArrayList<>();
+
+        for(int i=0; i<m; i++){
+            m_arr.add(kb.nextInt());
+        }
+//
+        for(int num : T.solution(n_arr, m_arr)){
+            System.out.print( num+" " );
+        }
+
     }
 }
