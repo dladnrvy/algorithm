@@ -30,21 +30,22 @@ public class hash_4 {
             if( rt - lt == k.length()){
                 //System.out.println(n_map);
 
-                for(char n_ch :n_map.keySet()){
-                    int n_cnt = n_map.get(n_ch);
-                    int map_cnt = map.getOrDefault(n_ch,0);
-
-                    if( n_cnt != map_cnt ){
-                        //System.out.println("들어옴");
-                        chk = false;
-                        break;
-                    }
-                }
-
-                if(chk){
-                   // System.out.println("정답:"+n_map);
-                    answer++;
-                }
+                if(n_map.equals(map)) answer++;
+//                for(char n_ch :n_map.keySet()){
+//                    int n_cnt = n_map.get(n_ch);
+//                    int map_cnt = map.getOrDefault(n_ch,0);
+//
+//                    if( n_cnt != map_cnt ){
+//                        //System.out.println("들어옴");
+//                        chk = false;
+//                        break;
+//                    }
+//                }
+//
+//                if(chk){
+//                   // System.out.println("정답:"+n_map);
+//                    answer++;
+//                }
 
                // System.out.println("제거전 : " + n_map + "/" + n.charAt(lt));
                 n_map.put(n.charAt(lt), n_map.getOrDefault(n.charAt(lt), 0)-1);
