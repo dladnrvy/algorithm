@@ -1,9 +1,6 @@
 package greedy;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 // 현수는 씨름 감독입니다. 현수는 씨름 선수를 선발공고를 냈고, N명의 지원자가 지원을 했습니다.
 // 현수는 각 지원자의 키와 몸무게 정보를 알고 있습니다.
@@ -19,30 +16,58 @@ import java.util.TreeMap;
 //180 70
 //170 72
 //181 60
+
+class Body implements Comparable<Body>{
+    public int h, w;
+    Body(int h, int w) {
+        this.h = h;
+        this.w = w;
+    }
+    @Override
+    public int compareTo(Body o){
+        return o.h-this.h;
+    }
+}
 public class greedy_1 {
-    public int solution(int n, int[] height, int[] weight) {
+    public int solution(ArrayList<Body> arr, int n) {
         //풀이1
-        int answer = n;
+        int answer = 0;
         // [172, 183, 180, 170, 181]
         // [67, 65, 70, 72, 60]
 
-        int chkNum = 0;
-        for(int i=0; i<n; i++){
-            int h = height[i];
-            int w = weight[i];
+//        int chkNum = 0;
+//        for(int i=0; i<n; i++){
+//            int h = height[i];
+//            int w = weight[i];
+//
+//            for(int j=0; j<n; j++){
+//                if( h < height[j] && w < weight[j]){
+////                    System.out.println("h : "+h);
+////                    System.out.println("height[j] : "+height[j]);
+////                    System.out.println("w : "+w);
+////                    System.out.println("weight[j] : "+weight[j]);
+//                    chkNum++;
+//                    break;
+//                }
+//            }
+//        }
+//         return answer - chkNum;
+        Collections.sort(arr);
 
-            for(int j=0; j<n; j++){
-                if( h > height[j] && w > weight[j]){
-//                    System.out.println("h : "+h);
-//                    System.out.println("height[j] : "+height[j]);
-//                    System.out.println("w : "+w);
-//                    System.out.println("weight[j] : "+weight[j]);
-                    chkNum++;
-                }
+        for(Body num : arr){
+            System.out.println(num.h + "/" + num.w);
+        }
+
+        int max = Integer.MIN_VALUE;
+        for(Body ob : arr){
+            if(ob.w > max){
+                max = ob.w;
+                answer++;
             }
         }
 
-        return answer - chkNum;
+
+        return answer;
     }
 
     public static void main(String[] args) {
@@ -50,16 +75,23 @@ public class greedy_1 {
         Scanner kb = new Scanner(System.in);
         int n = kb.nextInt();
         int height[] = new int [n];
-        int weight[] = new int [n];
-
+//        int weight[] = new int [n];
+//
+//        for(int i=0; i<n; i++){
+//            int num = kb.nextInt();
+//            int num2 = kb.nextInt();
+//            height[i] = num;
+//            weight[i] = num2;
+//        }
+        ArrayList<Body> arr = new ArrayList<>();
         for(int i=0; i<n; i++){
-            int num = kb.nextInt();
-            int num2 = kb.nextInt();
-            height[i] = num;
-            weight[i] = num2;
+            int h = kb.nextInt();
+            int w = kb.nextInt();
+            arr.add(new Body(h,w));
         }
 
-        System.out.print(T.solution(n, height, weight));
+
+        System.out.print(T.solution(arr, n));
 //        for(int num : T.solution(n,k)){
 //            System.out.print( num+" " );
 //        }
