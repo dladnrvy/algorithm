@@ -1,8 +1,6 @@
 package greedy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 // 현수는 다음 달에 결혼을 합니다.
 // 현수는 결혼식 피로연을 장소를 빌려 3일간 쉬지 않고 하려고 합니다.
@@ -19,18 +17,16 @@ import java.util.Scanner;
 //20 30
 //5 14
 class Times implements Comparable<Times>{
-    public int s, e;
-    Times(int s, int e) {
-        this.s = s;
-        this.e = e;
+    public int time;
+    public char stat;
+    Times(int time, char stat) {
+        this.time = time;
+        this.stat = stat;
     }
     @Override
     public int compareTo(Times o){
-        if( this.e == o.e){
-            return this.s - o.s;
-        }else{
-            return this.e - o.e;
-        }
+        if( this.time == o.time) return this.stat - o.stat;
+        else return this.time - o.time;
     }
 }
 public class greedy_3 {
@@ -39,21 +35,13 @@ public class greedy_3 {
         int answer = 0;
         Collections.sort(arr);
 
-        int e_time = 0;
-        for(Times num : arr){
-            System.out.println(num.s + "/" + num.e);
+        int max = 0;
+        for(Times t : arr){
+            //System.out.println("1 : "+num.time + "/" + num.stat);
+            if(t.stat == 's') max++;
+            else max --;
 
-//            if( num.e >= e_time){
-//                if(e_time <= num.s){
-//                    answer++;
-//                    e_time = num.e;
-//                }
-//            }
-            if(num.s >= e_time){
-                answer++;
-                e_time = num.e;
-            }
-
+            answer = Math.max(answer, max);
         }
 
         return answer;
@@ -67,9 +55,14 @@ public class greedy_3 {
         ArrayList<Times> arr = new ArrayList<>();
 
         for(int i=0; i<n; i++){
-            int h = kb.nextInt();
-            int w = kb.nextInt();
-            arr.add(new Times(h,w));
+            int s = kb.nextInt();
+            int e = kb.nextInt();
+
+            //System.out.println("s:"+s);
+            //System.out.println("e:"+e);
+
+            arr.add(new Times(s,'s'));
+            arr.add(new Times(e,'e'));
         }
 
 
