@@ -16,18 +16,20 @@ public class dfs_1 {
     static String answer = "NO";
     static int n, total = 0;
     boolean flag = false;
-    void dfs(int L, int sum,int[] arr, String chk){
+    void dfs(int L, int sum,int[] arr){
         if(flag) return;
-        System.out.println("L : " + L +" / sum : "+ sum + "/" + chk);
+        if(sum > total/2) return;
+        //System.out.println("L : " + L +" / sum : "+ sum + "/" + chk);
 
         if(L == n){
-            if(total/2 == sum){
+            if( (total-sum) == sum){
                 answer = "YES";
                 flag = true;
             }
         }else{
-            dfs(L+1, sum+arr[L], arr, "in");
-            dfs(L+1, sum , arr, "out");
+           // System.out.println("2 L : " + L +" / sum : "+ sum + "/" + chk);
+            dfs(L+1, sum+arr[L], arr);
+            dfs(L+1, sum , arr);
         }
     }
 
@@ -48,7 +50,7 @@ public class dfs_1 {
             total+=num;
         }
 
-        T.dfs(0,0,arr, "");
+        T.dfs(0,0,arr);
         System.out.print(answer);
 //        for(int num : T.solution(n,k)){
 //            System.out.print( num+" " );
