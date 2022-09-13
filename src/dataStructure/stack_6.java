@@ -1,5 +1,7 @@
 package dataStructure;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -16,9 +18,32 @@ public class stack_6 {
     public int solution(int n, int m) {
         //풀이1
         int answer = 0;
-        Stack<Integer> stk = new Stack<>();
-
-
+        Queue<Integer> que = new LinkedList<>();
+        for(int i=1; i<=n; i++) que.offer(i);
+//         123 45678
+// 1.
+//        int cnt = 0;
+//        while (que.size() > 1){
+//            cnt++;
+//            int num = que.poll();
+//            //System.out.println("빼기 : "+num);
+//            if(cnt != m){
+//                //System.out.println("추가 : "+num);
+//                que.offer(num);
+//            }else{
+//                //System.out.println("!!!!!제거 : "+num);
+//                cnt = 0;
+//            }
+//        }
+//
+//        //System.out.println(que.peek());
+//        answer = que.peek();
+// 2.
+        while (!que.isEmpty()){
+            for(int i=1; i<m; i++) que.offer(que.poll());
+            que.poll();
+            if(que.size() == 1) answer = que.poll();
+        }
         return answer;
     }
 
