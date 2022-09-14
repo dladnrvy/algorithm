@@ -1,6 +1,5 @@
 package dataStructure;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -14,7 +13,7 @@ import java.util.Scanner;
 //수업계획은 그 순서대로 앞에 수업이 이수되면 다음 수업을 시작하다는 것으로 해석합니다.
 //수업계획서상의 각 과목은 무조건 이수된다고 가정합니다.
 //필수과목순서가 주어지면 현수가 짠 N개의 수업설계가 잘된 것이면 “YES", 잘못된 것이면 ”NO“를 출력하는 프로그램을 작성하세요.
-public class stack_7 {
+public class Stack_7 {
     public String solution(String n, String m) {
         //풀이1
         String answer = "YES";
@@ -46,7 +45,7 @@ public class stack_7 {
     }
 
     public static void main(String[] args) {
-        stack_7 T = new stack_7();
+        Stack_7 T = new Stack_7();
         Scanner kb = new Scanner(System.in);
         String n = kb.nextLine();
         String m = kb.nextLine();
